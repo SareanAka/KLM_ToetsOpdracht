@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,7 +11,9 @@ public class GameManager : MonoBehaviour
     public bool AllPlanesParked => planes.All(plane => plane.IsParked);
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Assigns the planes and hangars a random number between 1 and 3.
+    /// </summary>
     void Start()
     {
         foreach (Hanger hangar in hangars)
@@ -28,8 +29,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets a new random number and checks if that number is unique.
+    /// </summary>
     private List<int> numbers = new List<int>();
-
     public int NewNumber(int r)
     {
         
@@ -50,6 +53,9 @@ public class GameManager : MonoBehaviour
         return a + 1;
     }
 
+    /// <summary>
+    /// Toggles the parking method for each plane
+    /// </summary>
     public void TogglePark()
     {
         foreach (var plane in planes)
@@ -58,6 +64,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles the lights for each plane
+    /// </summary>
     public void ToggleLights()
     {
         foreach (var plane in planes)
@@ -66,7 +75,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// When all planes are parked the update will enable the on screen text.
+    /// </summary>
     void Update()
     {
         planesParkedText.enabled = AllPlanesParked;
